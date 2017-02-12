@@ -1,0 +1,16 @@
+# Jim and the Orders | https://www.hackerrank.com/challenges/jim-and-the-orders/submissions/code/37442656
+delidic={}
+ordnum=0
+for _ in range(int(input())):
+    bgn,dur=list(map(int,input().split())) # get ti and di for order
+    ordnum+=1 # ordnum starts at 0, so increment to indicate current order
+    deli=bgn+dur # calculate delivered time
+    if deli in delidic: # if another order is being delivered at the time,
+        delidic[deli].append(ordnum) # append this order to the list
+    else: # if no other order being delivered at 'deli' time-unit.
+        delidic[deli]=[ordnum]
+dlist=sorted(delidic.keys())
+for t in dlist:
+    vl=delidic[t]
+    vl.sort()
+    print(*vl,sep=' ',end=' ')
